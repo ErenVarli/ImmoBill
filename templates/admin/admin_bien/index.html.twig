@@ -1,20 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdminBienController!{% endblock %}
+{% block title %}Les biens{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/wamp64/www/loic/Immo/projet_immobill/src/Controller/Admin/AdminBienController.php</code></li>
-        <li>Your template at <code>C:/wamp64/www/loic/Immo/projet_immobill/templates/admin/admin_bien/index.html.twig</code></li>
-    </ul>
-</div>
+<form action="">
+    <button class="btn btn-success" formaction="#">AJOUTER</button>
+</form>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>image</th>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Surface</th>
+            <th>Prix</th>
+            <th>Ville</th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        {% for unBien in lesBiens %}    
+        <tr>
+            <td><img class="rounded" style="width: 250px" src="{{asset('images/products/'~ unBien.image)}}"></td>
+            <td>{{ unBien.titre }}</td>
+            <td>{{ unBien.description }}</td>
+            <td>{{ unBien.surface }}</td>
+            <td>{{ unBien.prix }}</td>
+            <td>{{ unBien.ville }}</td>
+            <td>
+                <div class="d-flex">
+                    <form action="#" style="margin-right: 2px">
+                        <input type="submit" class="btn btn-outline-primary" value="MODIFIER">
+                    </form>
+                    <form method="POST" action="#" onsubmit="return confirm('Confirmer la suppression?')">
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="hidden" name="_token" value="{{csrf_token('sup'~ unProduit.id)}}">
+                        <input type="submit" class="btn btn-outline-danger" value="SUPPRIMER">
+                    </form>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>        
+</table>
 {% endblock %}
