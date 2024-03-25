@@ -19,10 +19,11 @@
 {% for bien in biens %}
 
 <div class="col-md-3">
-    <img src="{{asset('images/biens/'~ bien.image ~'')}}">
+    <img src="{{asset('images/biens/'~ bien.image ~'')}}" style="width:300px;height:200px;">
     <p>{{bien.nbPiece}} pièces - {{bien.surface}} m²</p>
     <p>{{bien.ville}} - {{bien.cp}}</p>
     <h2 class="mb-0">Prix : {{bien.prix}} €</h2>
+    </br>
     <p><a href="{{path('detailBien',{'id':bien.id})}}"><button type="button" class="btn btn-primary">Voir le détail</button></a></p>
     </div>
     {% endfor %}
@@ -30,8 +31,8 @@
 </div>
 </main>
 
-
 {% block stylesheets %}
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/css/bootstrap.min.css" integrity="sha512-w7GJhE5tSJ2kpD/3rWlz6xgZpVEQ6YjfB8/+UJn0e+Wp8IvvsCt/YZ21zTUJlZgjB37U/+4V0Ef7Mhg5QN5A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   {% endblock %}
 {% endblock %}
