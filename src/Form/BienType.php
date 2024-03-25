@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Bien;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,7 +15,7 @@ class BienType extends AbstractType
     {
         $builder
             ->add('titre')
-            ->add('description')
+            ->add('description', TextareaType::class)
             ->add('surface')
             ->add('prix')
             ->add('nbPiece')
@@ -23,7 +24,7 @@ class BienType extends AbstractType
             ->add('rue')
             ->add('cp')
             ->add('ville')
-            ->add('imageFile', FileType::class, ['required' => true])
+            ->add('imageFile', FileType::class, ['required' => false])
         ;
     }
 

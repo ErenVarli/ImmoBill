@@ -4,8 +4,7 @@ namespace App\Entity;
 
 use App\Repository\BienRepository;
 use Doctrine\ORM\Mapping as ORM;
-use PHPUnit\TextUI\XmlConfiguration\File;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: BienRepository::class)]
@@ -186,7 +185,7 @@ class Bien
         return $this->image;
     }
 
-    public function setImage(string $image): static
+    public function setImage(?string $image): static
     {
         $this->image = $image;
         $this->setCreatedAt(new \DateTimeImmutable());
@@ -198,7 +197,7 @@ class Bien
         return $this->imageFile;
     }
 
-    public function setImageFile(File $imageFile): self
+    public function setImageFile(File $imageFile=null): static
     {
         $this->imageFile = $imageFile;
         $this->setCreatedAt(new \DateTimeImmutable());

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% if isModification %}
+            Modification
+            {{leBien.titre}}
+        {% else %}    
+            Ajout d'un produit
+        {% endif %}{% endblock %}
+
+{% block body %}
+<div style="margin-top: 50px">
+    <h2 class="text-center">
+        {% if isModification %}
+            Modification
+            {{leBien.titre}}
+        {% else %}    
+            Ajout d'un produit
+        {% endif %}
+    </h2>
+    <div class="d-flex justify-content-center" >
+        
+        <div style="width: 50%">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button class="btn btn-primary" formaction="">ENREGISTRER</button>
+            {{ form_end(form) }}
+        </div>
+        {% if isModification %}
+        <div class="align-self-center" style="margin-left: 100px">
+            <img class="rounded" style="height: 300px" src="{{asset('images/biens/'~ leBien.image)}}">
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
