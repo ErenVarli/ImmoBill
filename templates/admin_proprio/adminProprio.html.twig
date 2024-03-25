@@ -1,20 +1,72 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdminProprioController!{% endblock %}
+{% block title %}
+	Proprio
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	{% block style %}
+		<style>
+			body {
+				background-color: white;
+			}
+			.btn {
+				border-radius: 10px;
+				margin: 5px;
+			}
+			img {
+				border-radius: 15px;
+			}
+			#bouton-ajouter {
+				margin: 2rem 0;
+			}
+		</style>
+	{% endblock %}
+	<main class="container">
+		<div class="example-wrapper">
+			<h1 class="my-4">Proprio</h1>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nom</th>
+						<th>Prénom</th>
+						<th>Mail</th>
+						<th>Tel.</th>
+						<th>Adresse</th>
+						<th>Action</th>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+					</tr>
+				</thead>
+				<tbody>
+					<a id="bouton-ajouter" class="btn btn-primary" href="{{ path('admin_proprio_ajout') }}">Ajouter</a>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/wamp64/www/varli/projet_immo/projet_immobill/src/Controller/AdminProprioController.php</code></li>
-        <li>Your template at <code>C:/wamp64/www/varli/projet_immo/projet_immobill/templates/admin_proprio/index.html.twig</code></li>
-    </ul>
-</div>
+					{% for leProprio in lesProprio %}
+						<tr>
+							<td>{{ leProprio.id }}</td>
+							<td>{{ leProprio.nom }}</td>
+							<td>{{ leProprio.prenom }}</td>
+							<td>{{ leProprio.mail }}</td>
+							<td>{{ leProprio.tel }}</td>
+							<td>{{ leProprio.adresse }}</td>
+
+
+							<td>
+								<a class="btn btn-secondary" href="{{ path('admin_proprio_modification', { id: leProprio.id }) }}">Modifier</a>
+								<form method="POST" action="{{ path('admin_proprio_suppression', { id: leProprio.id }) }}">
+									<input type="hidden" name="_method" value="delete"/>
+									<input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ leProprio.id) }}"/>
+									<input type="submit" class="btn btn-danger" value="Supprimer"/>
+								</form>
+
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</main>
+	{% block stylesheets %}
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/css/bootstrap.min.css" integrity="sha512-w7GJhE5tSJ2kpD/3rWlz6xgZpVEQ6YjfB8/+UJn0e+Wp8IvvsCt/YZ21zTUJlZgjB37U/+4V0Ef7Mhg5QN5A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+	{% endblock %}
 {% endblock %}

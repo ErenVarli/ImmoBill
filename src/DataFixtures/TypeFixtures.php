@@ -11,6 +11,7 @@ class TypeFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
+        
         $type1 = new Type();
         $type1->setNom("Maison");
         $manager->persist($type1);
@@ -47,5 +48,6 @@ class TypeFixtures extends Fixture
         $manager->persist($bien3);
 
         $manager->flush();
+
     }
 }

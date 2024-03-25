@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-  Proprio
+  Produits
 {% endblock %}
 
 {% block body %}
@@ -27,10 +27,11 @@
       <tbody>
         <div class="marge">
           <h1>{% if isModification %}
-            Modification
+            Modification de
             {{ proprio.nom }}
+            {{ proprio.prenom }}
           {% else %}
-            Ajout d'un Propriétaire
+            Ajout d'un propriétaire
           {% endif %}</h1>
         </div>
 
