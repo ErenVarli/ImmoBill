@@ -54,7 +54,7 @@ class AdminProprioController extends AbstractController
     #[Route('/admin/proprietaire/supprimer/{id}', name: 'admin_proprio_suppression', methods:"delete")]
     public function suppression(Proprietaires $proprio=null, Request $request, EntityManagerInterface $manager): Response
     {
-        if($this->isCsrfTokenValid("sup".$proprio->getId(), $request->get('_token'))){
+        if($this->isCsrfTokenValid("SUP".$proprio->getId(), $request->get('_token'))){
             $manager->remove($proprio);
             $manager->flush();
             $this->addFlash("success", "Suppression effectuée");
