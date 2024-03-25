@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProprietairesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProprietairesRepository::class)]
@@ -27,6 +29,14 @@ class Proprietaires
 
     #[ORM\Column(length: 255)]
     private ?string $adresse = null;
+
+    #[ORM\OneToMany(targetEntity: Bien::class, mappedBy: 'proprietaire', orphanRemoval: true)]
+    private Collection $lesBiens;
+
+    public function __construct()
+    {
+        $this->lesBiens = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -102,6 +112,36 @@ class Proprietaires
 
     public function __toString(){
         return $this->nom." , ".$this->getMail();
+    }
+
+    /**
+     * @return Collection<int, Bien>
+     */
+    public function getLesBiens(): Collection
+    {
+        return $this->lesBiens;
+    }
+
+    public function addLesBien(Bien $lesBien): static
+    {
+        if (!$this->lesBiens->contains($lesBien)) {
+            $this->lesBiens->add($lesBien);
+            $lesBien->setProprietaire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLesBien(Bien $lesBien): static
+    {
+        if ($this->lesBiens->removeElement($lesBien)) {
+            // set the owning side to null (unless already changed)
+            if ($lesBien->getProprietaire() === $this) {
+                $lesBien->setProprietaire(null);
+            }
+        }
+
+        return $this;
     }
 }
 

@@ -23,9 +23,9 @@ class BienType extends AbstractType
             ->add('type', EntityType::class, [
                 'class' => Type::class,
             ])
-            /*->add('type', EntityType::class, [
+            ->add('proprietaire', EntityType::class, [
                 'class' => Proprietaires::class,
-            ])*/
+            ])
             ->add('surface')
             ->add('prix')
             ->add('nbPiece')

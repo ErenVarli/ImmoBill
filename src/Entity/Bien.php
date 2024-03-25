@@ -58,6 +58,10 @@ class Bien
     #[ORM\ManyToOne(inversedBy: 'bien')]
     private ?Type $type = null;
 
+    #[ORM\ManyToOne(inversedBy: 'lesBiens')]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Proprietaires $proprietaire = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -227,6 +231,18 @@ class Bien
     public function setType(?Type $type): static
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getProprietaire(): ?Proprietaires
+    {
+        return $this->proprietaire;
+    }
+
+    public function setProprietaire(?Proprietaires $proprietaire): static
+    {
+        $this->proprietaire = $proprietaire;
 
         return $this;
     }
