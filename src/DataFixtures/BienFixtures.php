@@ -20,7 +20,7 @@ class BienFixtures extends Fixture
             ->setRue('2 rue plage')
             ->setCp('64100')
             ->setVille('Bayonne')
-            ->setImage("OIP.jpeg");
+            ->setImage("OIP.jfif");
 
 
         $manager->persist($produit1);
@@ -36,7 +36,7 @@ class BienFixtures extends Fixture
             ->setRue('2 rue canard')
             ->setCp('64100')
             ->setVille('Bayonne')
-            ->setImage("maison-plage.jpg");
+            ->setImage("maison.jpg");
 
 
         $manager->persist($produit2);
