@@ -46,10 +46,10 @@ class AdminTypeController extends AbstractController
     }
 
     #[Route('/admin/supprimerType/{id}', name: 'admin_type_suppression', methods:"delete")]
-    public function suppression(Type $bien=null, Request $request, EntityManagerInterface $manager): Response
+    public function suppression(Type $type=null, Request $request, EntityManagerInterface $manager): Response
     {
         if($this->isCsrfTokenValid("sup".$type->getId(), $request->get('_token'))){
-            $manager->remove($bien);
+            $manager->remove($type);
             $manager->flush();
             $this->addFlash("success", "Suppression effectuée");
              
