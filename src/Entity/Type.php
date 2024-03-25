@@ -27,7 +27,7 @@ class Type
         $this->bien = new ArrayCollection();
     }
 
-
+    
     public function getId(): ?int
     {
         return $this->id;
