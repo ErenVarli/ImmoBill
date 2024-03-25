@@ -16,6 +16,7 @@ class ProprioFixtures extends Fixture
             ->setMail("alicedupont@mail.com")
             ->setTel("0650458565")
             ->setAdresse("3 Rue du Grand Berger");
+        $manager->persist($proprio1);
 
 
         $proprio2 = new Proprietaires();
@@ -24,6 +25,7 @@ class ProprioFixtures extends Fixture
             ->setMail("pdupont@mail.com")
             ->setTel("0612345678")
             ->setAdresse("1 Rue des Fleurs");
+        $manager->persist($proprio2);
 
 
         $proprio3 = new Proprietaires();
@@ -32,6 +34,7 @@ class ProprioFixtures extends Fixture
             ->setMail("thomas.martin@mail.com")
             ->setTel("0645612389")
             ->setAdresse("7 Rue du Marche");
+        $manager->persist($proprio3);
 
         $proprio4 = new Proprietaires();
         $proprio4->setNom("Durand")
@@ -39,6 +42,7 @@ class ProprioFixtures extends Fixture
             ->setMail("chloe.durand@mail.com")
             ->setTel("0687945123")
             ->setAdresse("9 Rue du Parc");
+        $manager->persist($proprio4);
 
         $proprio5 = new Proprietaires();
         $proprio5->setNom("Robert")
@@ -46,6 +50,7 @@ class ProprioFixtures extends Fixture
             ->setMail("jean.robert@mail.com")
             ->setTel("0654879123")
             ->setAdresse("11 Rue des Ecoles");
+        $manager->persist($proprio5);
 
         $manager->flush();
     }

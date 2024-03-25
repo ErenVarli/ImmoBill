@@ -104,3 +104,4 @@ class Proprietaires
         return $this->nom." , ".$this->getMail();
     }
 }
+
