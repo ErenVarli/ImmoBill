@@ -3,8 +3,18 @@
 {% block title %}Les biens{% endblock %}
 
 {% block body %}
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{message}}
+    </div>
+{% endfor %}        
+{% for message in app.flashes('failed') %}
+    <div class="alert alert-danger">
+        {{message}}
+    </div>
+{% endfor %}
 <form action="">
-    <button class="btn btn-success" formaction="#">AJOUTER</button>
+    <button class="btn btn-success" formaction="{{path("admin_bien_ajout")}}">AJOUTER</button>
 </form>
 <table class="table table-striped">
     <thead>
@@ -20,7 +30,7 @@
     <tbody class="table-group-divider">
         {% for unBien in lesBiens %}    
         <tr>
-            <td><img class="rounded" style="width: 250px" src="{{asset('images/products/'~ unBien.image)}}"></td>
+            <td><img class="rounded" style="width: 250px" src="{{asset('images/biens/'~ unBien.image)}}"></td>
             <td>{{ unBien.titre }}</td>
             <td>{{ unBien.description }}</td>
             <td>{{ unBien.surface }}</td>
@@ -28,12 +38,12 @@
             <td>{{ unBien.ville }}</td>
             <td>
                 <div class="d-flex">
-                    <form action="#" style="margin-right: 2px">
+                    <form action="{{path("admin_bien_modification", {'id': unBien.id})}}" style="margin-right: 2px">
                         <input type="submit" class="btn btn-outline-primary" value="MODIFIER">
                     </form>
-                    <form method="POST" action="#" onsubmit="return confirm('Confirmer la suppression?')">
+                    <form method="POST" action="{{path("admin_bien_suppression", {'id': unBien.id})}}" onsubmit="return confirm('Confirmer la suppression?')">
                         <input type="hidden" name="_method" value="delete">
-                        <input type="hidden" name="_token" value="{{csrf_token('sup'~ unProduit.id)}}">
+                        <input type="hidden" name="_token" value="{{csrf_token('sup'~ unBien.id)}}">
                         <input type="submit" class="btn btn-outline-danger" value="SUPPRIMER">
                     </form>
                 </div>
