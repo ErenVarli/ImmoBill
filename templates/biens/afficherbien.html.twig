@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FilmController!{% endblock %}
+
+{% block body %}
+
+{% block titre %}<h1>detail du Bien</h1>{% endblock %}
+
+
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{asset('images/biens/'~ bien.image ~'')}}" class="img-fluid rounded-start">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h2 class="card-title">{{bien.prix}} €</h2>
+        <p class="card-text">{{bien.description}}</p>
+        <p class="card-text">{{bien.surface}} m²</p>
+        <p class="card-text">{{bien.nbPiece}} pièces</p>
+        <p class="card-text">{{bien.nbChambre}} chambres</p>
+        <p class="card-text">{{bien.etage}} étages</p>
+        <p class="card-text">{{bien.rue}} - {{bien.ville}} {{bien.cp}}</p>
+        <p class="card-text">Type : {{bien.type}}</p>
+        <p class="card-text"><small class="text-body-secondary">{{bien.titre}}</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

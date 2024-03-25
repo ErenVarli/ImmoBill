@@ -9,7 +9,7 @@ class BienFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $produit1 = new Bien();
+        /*$produit1 = new Bien();
         $produit1->setTitre("Appartement")
             ->setDescription("un beau appartement vue sur la mer")
             ->setSurface(300)
@@ -20,7 +20,7 @@ class BienFixtures extends Fixture
             ->setRue('2 rue plage')
             ->setCp('64100')
             ->setVille('Bayonne')
-            ->setImage("OIP.jpeg");
+            ->setImage("OIP.jfif");
 
 
         $manager->persist($produit1);
@@ -36,7 +36,7 @@ class BienFixtures extends Fixture
             ->setRue('2 rue canard')
             ->setCp('64100')
             ->setVille('Bayonne')
-            ->setImage("maison-plage.jpg");
+            ->setImage("maison.jpg");
 
 
         $manager->persist($produit2);
@@ -56,6 +56,6 @@ class BienFixtures extends Fixture
 
         $manager->persist($produit3);
 
-        $manager->flush();
+        $manager->flush();*/
     }
 }
