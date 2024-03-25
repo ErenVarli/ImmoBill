@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Bien;
 use App\Form\BienType;
 use App\Repository\BienRepository;
+use App\Repository\TypeRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
