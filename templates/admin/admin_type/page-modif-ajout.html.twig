@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% if isModification %}
+            Modification
+            {{type.nom}}
+        {% else %}    
+            Ajout d'un type
+        {% endif %}{% endblock %}
+
+{% block body %}
+<div style="margin-top: 50px">
+    <h2 class="text-center">
+        {% if isModification %}
+            Modification
+            {{type.nom}}
+        {% else %}    
+            Ajout d'un produit
+        {% endif %}
+    </h2>
+    <div class="d-flex justify-content-center" >
+        
+        <div style="width: 50%">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button class="btn btn-primary" formaction="">ENREGISTRER</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

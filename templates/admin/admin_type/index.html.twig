@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les Types{% endblock %}
+
+{% block body %}
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{message}}
+    </div>
+{% endfor %}        
+{% for message in app.flashes('failed') %}
+    <div class="alert alert-danger">
+        {{message}}
+    </div>
+{% endfor %}
+<form action="">
+    <button class="btn btn-success" formaction="{{path("admin_type_ajout")}}">AJOUTER</button>
+</form>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        {% for type in lesTypes %}    
+        <tr>
+            
+            <td>{{ type.nom }}</td>
+            
+            <td>
+                <div class="d-flex">
+                    <form action="{{path("admin_type_modification", {'id': type.id})}}" style="margin-right: 2px">
+                        <input type="submit" class="btn btn-outline-primary" value="MODIFIER">
+                    </form>
+                    <form method="POST" action="{{path("admin_type_suppression", {'id': type.id})}}" onsubmit="return confirm('Confirmer la suppression?')">
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="hidden" name="_token" value="{{csrf_token('sup'~ type.id)}}">
+                        <input type="submit" class="btn btn-outline-danger" value="SUPPRIMER">
+                    </form>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>        
+</table>
+{% endblock %}
