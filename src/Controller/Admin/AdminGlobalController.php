@@ -8,10 +8,10 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class AdminGlobalController extends AbstractController
 {
-    #[Route('/admin', name: 'app_admin')]
+    #[Route('/admin', name: 'app_admin_bienvenue')]
     public function index(): Response
     {
-        return $this->render('admin/admin_global/index.html.twig', [
+        return $this->render('admin/admin_global/adminAccueil.html.twig', [
             'name' => 'Admin'
         ]);
     }
