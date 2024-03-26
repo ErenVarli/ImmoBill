@@ -12,7 +12,7 @@ class BiensController extends AbstractController
     #[Route('/', name: 'accueil')]
     public function index(): Response
     {
-        return $this->render('biens/index.html.twig');
+        return $this->render('index.html.twig');
     }
 
     #[Route('/biens', name: 'biens')]
