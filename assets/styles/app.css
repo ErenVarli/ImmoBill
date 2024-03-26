@@ -1,6 +1,10 @@
+/* Général */ 
+
+a { color: inherit !important; } 
+
 /* Bouton de connexion */ 
 .btn-connexion {
-    border: solid 1px black;
+    border: solid 1px black !important;
     border-radius: 5px;
     background-color: transparent;
     padding: 10px;
@@ -9,7 +13,7 @@
 
 .btn-connexion:hover {
     background-color: #0d6efd;
-    color: white;
+    color: white !important;
 
 }
 
