@@ -15,11 +15,13 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class AdminProprioController extends AbstractController
 {
+
+    
     #[Route('/admin/proprietaires', name: 'lesProprietairesAdmin')]
     public function index(ProprietairesRepository $lesProprio): Response
     {
         $lesProprio = $lesProprio->findAll();
-        return $this->render('admin_proprio/adminProprio.html.twig', [
+        return $this->render('admin/admin_proprio/adminProprio.html.twig', [
             'lesProprio' => $lesProprio,
         ]);
     }
@@ -43,7 +45,7 @@ class AdminProprioController extends AbstractController
             return $this->redirectToRoute("lesProprietairesAdmin");
         }
 
-        return $this->render('admin_proprio/modificationProprio.html.twig', [
+        return $this->render('admin/admin_proprio/modificationProprio.html.twig', [
             'proprio' => $lesProprio,
             'form' => $form->createView(),
             "isModification" => $lesProprio->getId() !== null
