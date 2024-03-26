@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello FilmController!{% endblock %}
+{% block title %}{{bien.description}}{% endblock %}
 
 {% block body %}
 
@@ -10,7 +10,7 @@
 <div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="{{asset('images/biens/'~ bien.image ~'')}}" class="img-fluid rounded-start" style="width:250px;height:150px;>
+      <img src="{{asset('images/biens/'~ bien.image ~'')}}" class="img-fluid rounded-start" width="250" height="150">
     </div>
     <div class="col-md-8">
       <div class="card-body">

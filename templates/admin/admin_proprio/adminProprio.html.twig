@@ -1,30 +1,27 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	Proprio
+	Propriétaires
 {% endblock %}
 
 {% block body %}
 	{% block style %}
 		<style>
 			body {
-				background-color: white;
-			}
-			.btn {
-				border-radius: 10px;
-				margin: 5px;
-			}
-			img {
-				border-radius: 15px;
-			}
-			#bouton-ajouter {
-				margin: 2rem 0;
+				background-color: #FCFCFC;
+				color: white;
 			}
 		</style>
 	{% endblock %}
 	<main class="container">
 		<div class="example-wrapper">
-			<h1 class="my-4">Proprio</h1>
+			<div class="proprio-ajout">
+				<h1 class="my-4">
+					Liste des Propriétaires
+				</h1>
+			</div>
+			<a class="btn btn-primary bouton-ajout" href="{{ path('admin_proprio_ajout') }}">Ajouter</a>
+
 			<table class="table">
 				<thead>
 					<tr>
@@ -35,11 +32,12 @@
 						<th>Tel.</th>
 						<th>Adresse</th>
 						<th>Action</th>
+						<th></th>
+
 
 					</tr>
 				</thead>
 				<tbody>
-					<a id="bouton-ajouter" class="btn btn-primary" href="{{ path('admin_proprio_ajout') }}">Ajouter</a>
 
 					{% for leProprio in lesProprio %}
 						<tr>
@@ -52,14 +50,16 @@
 
 
 							<td>
-								<a class="btn btn-secondary" href="{{ path('admin_proprio_modification', { id: leProprio.id }) }}">Modifier</a>
+								<a class="btn btn-secondary  bouton-proprietaire" href="{{ path('admin_proprio_modification', { id: leProprio.id }) }}">Modifier</a>
+							</td>
+							<td>
 								<form method="POST" action="{{ path('admin_proprio_suppression', { id: leProprio.id }) }}">
 									<input type="hidden" name="_method" value="delete"/>
 									<input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ leProprio.id) }}"/>
-									<input type="submit" class="btn btn-danger" value="Supprimer"/>
+									<input type="submit" class="btn btn-danger bouton-proprietaire" value="Supprimer"/>
 								</form>
-
 							</td>
+
 						</tr>
 					{% endfor %}
 				</tbody>
