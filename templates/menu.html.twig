@@ -35,10 +35,21 @@
 				</li>
 
 			</ul>
+
 			<ul class="ul-droite">
-				<li class="nav-item">
-					<a class="nav-link btn-connexion" href="{{path("app_login")}}">Connexion</a>
-				</li>
+				<span class="navbar-text">
+					{% if app.user %}
+						Connecté en tant que
+						{{ app.user.userIdentifier }}
+						-
+
+						<a class="btn-connexion" href="{{ path('app_logout') }}">Déconnexion</a>
+					{% else %}
+						<a class="btn-connexion" href="{{ path('app_login') }}">
+							Connexion
+						</a>
+					{% endif %}
+				</span>
 			</ul>
 		</div>
 	</div>
