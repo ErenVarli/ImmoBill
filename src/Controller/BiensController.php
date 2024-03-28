@@ -14,6 +14,12 @@ class BiensController extends AbstractController
     {
         return $this->render('index.html.twig');
     }
+    
+    #[Route('/admin', name: 'adminPanel')]
+    public function admin_panel(): Response
+    {
+        return $this->render('admin.html.twig');
+    }
 
     #[Route('/biens', name: 'biens')]
     public function biens(BienRepository $bienRepository ): Response

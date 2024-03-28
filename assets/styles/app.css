@@ -1,89 +1,254 @@
 /* Général */
-*{
+* {
     font-weight: light;
 }
+
 a {
     color: inherit !important;
 }
-h1{
+
+h1 {
     color: black;
 }
+
 /* Boutons */
-.btn-connexion{
+button,
+.button {
+    color: white !important;
+}
+
+.btn-connexion {
     border: solid 1px black !important;
     border-radius: 5px;
     background-color: transparent;
     padding: 10px;
+    font-size: 18px !important;
+
     text-decoration: none;
 }
-.btn-connexion:hover{
+
+.btn-connexion:hover {
     background-color: #0d6efd;
     color: white !important;
     border: solid 1px #0d6efd !important;
+
 }
-.btn-retour{
+
+.un-sur-autre {
+    display: flex;
+    flex-wrap: wrap;
+    width: 120px;
+    margin: auto;
+}
+
+.un-sur-autre button {
+    margin-bottom:
+        15px;
+}
+
+.btn-retour {
     margin-right: 50px;
 }
-.btn-enregistrer{
+
+.btn-enregistrer {
     float: right;
 }
-.bouton-proprietaire{
+
+.bouton-proprietaire {
     border-radius: 5px;
     padding: 10px;
     text-decoration: none;
-    color: white !important;
 }
-.bouton-proprietaire:hover{
+
+.bouton-proprietaire:hover {
     background-color: #0d6efd;
 }
-.bouton-ajout{
+
+.bouton-ajout {
     height: 40px;
     margin-bottom: 2rem;
     float: left;
 }
+
 /* navbar */
+.navbar {
+    background-color: #ebebeb !important;
+    color: #303030;
+}
+
+nav li {
+    font-size: 22px;
+    text-align: center;
+}
+
+nav a {
+    background-color: red;
+}
+
+.dropdown-item {
+    font-size: 18px;
+}
+
+.elementNav {
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    display: flex;
+    transform: translateX(-50%);
+}
+
+.connectee-tant {
+    font-size: 12px;
+
+}
+
 .ul-droite {
     position: absolute;
     top: 50;
     right: 50px;
     margin: auto;
 }
+
 .ul-droite li {
     list-style-type: none;
 }
+
 /* Formulaire de connexion */
 #formulaire-connexion {
     border: solid 1px black;
     border-radius: 15px;
     width: 650px;
+    height: 400px;
     margin: auto;
     padding: 2rem;
+    margin: auto;
+    background-color: white;
+    color: black;
+    margin-top: 150px;
+
 }
+
+.form-inter {
+    padding: 5%;
+}
+
+#formulaire-connexion button {
+    float: right;
+    font-size: 14px;
+}
+
 /* Page Accueil Admin */
 #bienvenue-admin {
     margin: auto;
     width: auto;
     text-align: center;
 }
-/* navbar */
+
+.formulaire-logo-text {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.bloc-cred {
+    margin-bottom: 20px;
+}
+
+#se-souvenir-de-moi {
+    margin-bottom: 20px;
+}
+
+footer {
+    background-color: #ebebeb !important;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    color: #303030 !important;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+
 #logo-immobill {
     border-radius: 100%;
 }
+
 .menu-primaire {
     margin: auto;
 }
+
 .menu-primaire a {
     font-size: 25px;
     color: black !important;
 }
+
 .menu-primaire li a:hover {
     color: rgb(7, 114, 214) !important;
 }
+
+footer {
+    background-color: #303030;
+}
+
 /* Propriétaire */
-.proprio-ajout{
+.proprio-ajout {
     display: flex;
     justify-content: center;
     border-radius: 15px;
     margin-bottom: 50px;
     border: solid 1px black;
+}
+
+/* Bien CSS*/
+.bloc-bien {
+    margin: auto;
+    border: solid 1px black;
+    width: 850px;
+    margin: auto;
+    border-radius: 15px;
+}
+
+.bloc-bien h1 {
+    color: #003f9c;
+}
+
+.descr {
+    font-size: 22px;
+    background-color: #fdfdfd;
+    padding: 1rem;
+}
+
+.descr p {
+    border-radius: 15px;
+}
+
+#image-bien {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 50px;
+}
+
+
+/* Types */
+
+.table-type {
+    margin: auto;
+    border: solid 1px black;
+    width: 850px;
+    margin: auto;
+    border-radius: 15px;
+}
+
+.types-de-bien-cadre {
+    border: solid 1px black;
+    border-radius: 15px;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 50px;
 }

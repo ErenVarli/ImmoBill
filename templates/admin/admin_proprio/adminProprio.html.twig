@@ -5,11 +5,20 @@
 {% endblock %}
 
 {% block body %}
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{message}}
+    </div>
+{% endfor %}        
+{% for message in app.flashes('failed') %}
+    <div class="alert alert-danger">
+        {{message}}
+    </div>
+{% endfor %}
 	{% block style %}
 		<style>
 			body {
 				background-color: #FCFCFC;
-				color: white;
 			}
 		</style>
 	{% endblock %}
@@ -20,7 +29,7 @@
 					Liste des Propriétaires
 				</h1>
 			</div>
-			<a class="btn btn-primary bouton-ajout" href="{{ path('admin_proprio_ajout') }}">Ajouter</a>
+			<a class="btn btn-primary bouton-ajout button" href="{{ path('admin_proprio_ajout') }}">Ajouter</a>
 
 			<table class="table">
 				<thead>
@@ -53,7 +62,7 @@
 								<a class="btn btn-secondary  bouton-proprietaire" href="{{ path('admin_proprio_modification', { id: leProprio.id }) }}">Modifier</a>
 							</td>
 							<td>
-								<form method="POST" action="{{ path('admin_proprio_suppression', { id: leProprio.id }) }}">
+								<form method="POST" action="{{ path('admin_proprio_suppression', { id: leProprio.id })  }}"  onsubmit="return confirm('Un proprietaire va être supprimé, êtes vous sûr?')">
 									<input type="hidden" name="_method" value="delete"/>
 									<input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ leProprio.id) }}"/>
 									<input type="submit" class="btn btn-danger bouton-proprietaire" value="Supprimer"/>

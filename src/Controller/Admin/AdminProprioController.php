@@ -41,7 +41,7 @@ class AdminProprioController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $manager->persist($lesProprio);
             $manager->flush();
-            $this->addFlash('success', 'Propriétaire ajouté');
+            $this->addFlash('success', 'Action effectué avec succès!');
             return $this->redirectToRoute("lesProprietairesAdmin");
         }
 
