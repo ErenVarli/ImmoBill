@@ -1,40 +1,56 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connexion
+{% block title %}
+  Connexion
 {% endblock %}
 
 {% block body %}
-	<form method="post" id="formulaire-connexion">
-		{% if error %}
-			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-		{% endif %}
+  {% block stye %}
+    <style>
+      body {
+        background-image: url('https://www.marbella-hills-homes.com/cms/wp-content/uploads/2017/08/mh2729_1_villa-1.jpg');
+        background-size: cover;
+        backdrop-filter: blur(10px);
+        height: 100vh;
+      }
+    </style>
+  {% endblock %}
+  <form method="post" id="formulaire-connexion">
+  <div class="form-inter">
+    {% if error %}
+      <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
 
-		{% if app.user %}
-			<div class="mb-3">
-				Connecté en tant que
-				{{ app.user.userIdentifier }}
-				-
-				<a href="{{ path('app_logout') }}">Déconnexion</a>
-			</div>
-		{% endif %}
+    {% if app.user %}
+      <div class="mb-3">
+        Connecté en tant que
+        {{ app.user.userIdentifier }}
+        -
+        <a href="{{ path('app_logout') }}">Déconnexion</a>
+      </div>
+    {% endif %}
 
-		<h1 class="h3 mb-3 font-weight-normal">Veuillez vous connecter.</h1>
-		<label for="inputEmail">Email</label>
-		<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-		<label for="inputPassword">Mot de passe</label>
-		<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+    <div class="formulaire-logo-text">
+      <h1 class="h3 mb-3 font-weight-normal">Hey! Veuillez vous connecter.</h1>
+      <img src="{{ asset('images/immobill.png') }}" id="logo-immobill" style="width:55px;height:55px;" />
+    </div>
 
-		<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+    <div class="bloc-cred">
+      <label for="inputEmail">Email</label>
+      <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus />
+    </div>
+    <div class="bloc-cred">
+      <label for="inputPassword">Mot de passe</label>
+      <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required />
+    </div>
 
-		<div class="checkbox mb-3">
-			<label>
-				<input type="checkbox" name="_remember_me">
-				Se souvenir de moi
-			</label>
-		</div>
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
 
-		<button class="btn btn-lg btn-primary" type="submit">
-			Se connecter
-		</button>
-	</form>
+    <div class="checkbox mb-3" >
+      <label><input style="margin-right: 5px;" type="checkbox" id="se-souvenir-de-moi" name="_remember_me" />Se souvenir de moi</label>
+    </div>
+
+    <button class="btn btn-lg btn-primary" type="submit">Se connecter</button>
+ </div>
+  </form>
 {% endblock %}

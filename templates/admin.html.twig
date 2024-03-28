@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+  {% block stye %}
+    <style>
+      body {
+        background-color: white;
+        height: 100vh;
+      }
+    </style>
+  {% endblock %}<div class="">
+  <h1>Bonjour Admin!</h1>
+  {% if app.user %}
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Gestion
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a class="dropdown-item" href="{{ path('lesBiensAdmin') }}">Biens</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{{ path('lesProprietairesAdmin') }}">Propriétaires</a>
+							</li>
+							<li class="nav-item">
+								<a class="dropdown-item" href="{{ path('lesTypesAdmin') }}">Types</a>
+							</li>
+						</ul>
+					</li>
+				{% endif %}
+</div>
+{% endblock %}

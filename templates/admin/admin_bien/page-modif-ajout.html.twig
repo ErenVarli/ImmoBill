@@ -1,35 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% if isModification %}
-            Modification
-            {{leBien.titre}}
-        {% else %}    
-            Ajout d'un produit
-        {% endif %}{% endblock %}
+{% block title %}
+  {% if isModification %}
+    Modification {{ leBien.titre }}
+  {% else %}
+    Ajout d'un bien
+  {% endif %}
+{% endblock %}
 
 {% block body %}
-<div style="margin-top: 50px">
-    <h2 class="text-center">
-        {% if isModification %}
-            Modification
-            {{leBien.titre}}
-        {% else %}    
+<div style="margin-top: 50px;">
+  <div class="d-flex justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          {% if isModification %}
+            Modification {{ leBien.titre }}
+          {% else %}
             Ajout d'un bien
-        {% endif %}
-    </h2>
-    <div class="d-flex justify-content-center" >
-        
-        <div style="width: 50%">
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            <button class="btn btn-primary" formaction="">ENREGISTRER</button>
-            {{ form_end(form) }}
+          {% endif %}
         </div>
-        {% if isModification %}
-        <div class="align-self-center" style="margin-left: 100px">
-            <img class="rounded" style="height: 300px" src="{{asset('images/biens/'~ leBien.image)}}">
-        </div>
+        <div class="card-body">
+                {% if isModification %}
+          <div class="align-self-center mx-3">
+            <img class="rounded" style="height: 300px" src="{{ asset('images/biens/' ~ leBien.image ~ '') }}" />
+          </div>
         {% endif %}
+          {{ form_start(form) }}
+          {{ form_widget(form) }}
+            <div class="d-flex un-sur-autre justify-content-center">
+              <button class="btn btn-primary" type="submit">ENREGISTRER</button>
+              <a class="btn-retour-un-sur-autre" href="{{ path('lesBiensAdmin') }}">Retour</a>
+            </div>
+          {{ form_end(form) }}
+        </div>
+
+      </div>
     </div>
+  </div>
 </div>
 {% endblock %}

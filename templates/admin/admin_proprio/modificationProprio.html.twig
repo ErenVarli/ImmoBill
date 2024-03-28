@@ -1,55 +1,54 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	Produits
+  Produits
 {% endblock %}
 
 {% block body %}
-	{% block style %}
-		<style>
-			body {
-				background-color: white;
-				color: black;
-			}
-			.btn {
-				border-radius: 10px;
-				margin: 5px;
-			}
-			img {
-				border-radius: 15px;
-			}
-			.marge {
-				margin: 2rem 0;
-			}
-		</style>
-	{% endblock %}
-	<main class="container">
-		<div class="example-wrapper">
-			<tbody>
-				<div class="marge">
-					<h1>
-						{% if isModification %}
-							Modification de
-							{{ proprio.nom }}
-							{{ proprio.prenom }}
-						{% else %}
-							Ajout d'un propriétaire
-						{% endif %}
-					</h1>
-				</div>
+  {% block style %}
+    <style>
+      body {
+        background-color: white;
+        color: black;
+      }
+      .btn {
+        border-radius: 10px;
+        margin: 5px;
+      }
+      img {
+        border-radius: 15px;
+      }
+      .marge {
+        margin: 2rem 0;
+      }
+    </style>
+  {% endblock %}
+  <main class="container">
+    <div class="example-wrapper">
+      <tbody>
+        <div class="marge">
+          <h1>
+            {% if isModification %}
+              Modification de
+              {{ proprio.nom }}
+              {{ proprio.prenom }}
+            {% else %}
+              Ajout d'un propriétaire
+            {% endif %}
+          </h1>
+        </div>
 
-				{{ form_start(form) }}
-				{{ form_widget(form) }}
-        				<a class="btn-retour" href="{{ path('lesProprietairesAdmin') }}">Retour</a>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <a class="btn-retour" href="{{ path('lesProprietairesAdmin') }}">Retour</a>
 
-				<input  type="submit" class="btn btn-primary btn-enregistrer" value="Enregistrer"/>
+        <input type="submit" class="btn btn-primary btn-enregistrer" value="Enregistrer" />
 
-				{{ form_end(form) }}
-
-			</tbody>
-		</div>
-	</main>
-	{% block stylesheets %}
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/css/bootstrap.min.css" integrity="sha512-w7GJhE5tSJ2kpD/3rWlz6xgZpVEQ6YjfB8/+UJn0e+Wp8IvvsCt/YZ21zTUJlZgjB37U/+4V0Ef7Mhg5QN5A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-	{% endblock %}
+        {{ form_end(form) }}
+      </tbody>
+    </div>
+  </main>
+  {% block stylesheets %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/css/bootstrap.min.css" integrity="sha512-w7GJhE5tSJ2kpD/3rWlz6xgZpVEQ6YjfB8/+UJn0e+Wp8IvvsCt/YZ21zTUJlZgjB37U/+4V0Ef7Mhg5QN5A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  {% endblock %}
 {% endblock %}
