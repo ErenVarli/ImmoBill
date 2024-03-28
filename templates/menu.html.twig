@@ -6,34 +6,39 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<ul class="navbar-nav">
-				<div class="elementNav">
-					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="{{path("accueil")}}">Accueil</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{path("biens")}}">Biens</a>
-					</li>
-				</div>
-				{% if app.user %}
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							Gestion
-						</a>
-						<ul class="dropdown-menu">
-							<li>
-								<a class="dropdown-item" href="{{ path('lesBiensAdmin') }}">Biens</a>
-							</li>
-							<li>
-								<a class="dropdown-item" href="{{ path('lesProprietairesAdmin') }}">Propriétaires</a>
-							</li>
-							<li class="nav-item">
-								<a class="dropdown-item" href="{{ path('lesTypesAdmin') }}">Types</a>
-							</li>
-						</ul>
-					</li>
-				{% endif %}
-				<li
-					class="nav-item"><a class="nav-link" href="{{path("lesMembresAdmin")}}">Membres</a>
+				<li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="{{path("accueil")}}">Accueil</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{path("biens")}}">Biens</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{path("lesProprietairesAdmin")}}">Propriétaires</a>
+				</li>
+				<li class="nav-item">
+
+					{% if app.user %}
+
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								Gestion
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a class="dropdown-item" href="{{ path('lesBiensAdmin') }}">Biens</a>
+								</li>
+								<li>
+									<a class="dropdown-item" href="{{ path('lesProprietairesAdmin') }}">Propriétaires</a>
+								</li>
+								<li class="nav-item">
+									<a class="dropdown-item" href="{{ path('lesTypesAdmin') }}">Types</a>
+								</li>
+							</ul>
+						</li>
+					{% endif %}
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{path("contact")}}">Contact</a>
 				</li>
 			</ul>
 			<ul class="ul-droite">

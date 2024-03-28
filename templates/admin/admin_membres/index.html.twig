@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les Types{% endblock %}
+
+{% block body %}
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{message}}
+    </div>
+{% endfor %}        
+{% for message in app.flashes('failed') %}
+    <div class="alert alert-danger">
+        {{message}}
+    </div>
+{% endfor %}
+<form action="">
+    <button class="btn btn-success" formaction="{{path("admin_membre_ajout")}}">AJOUTER</button>
+</form>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Mail</th>
+            <th>Mot de passe</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        {% for membre in membres %}    
+        <tr>
+            
+            <td>{{ membre.email }}</td>
+            <td>{{ membre.password }}</td>
+            <td>{{ membre.nom }}</td>
+            <td>{{ membre.prenom}}</td>
+            
+            <td>
+                <div class="d-flex">
+                    <form action="{{path("admin_membre_modification", {'id': membre.id})}}" style="margin-right: 2px">
+                        <input type="submit" class="btn btn-outline-primary" value="MODIFIER">
+                    </form>
+                    <form method="POST" action="{{path("admin_membre_suppression", {'id': membre.id})}}" onsubmit="return confirm('Confirmer la suppression?')">
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="hidden" name="_token" value="{{csrf_token('sup'~ membre.id)}}">
+                        <input type="submit" class="btn btn-outline-danger" value="SUPPRIMER">
+                    </form>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>        
+</table>
+{% endblock %}
