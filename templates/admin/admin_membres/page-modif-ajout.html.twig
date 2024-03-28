@@ -1,18 +1,51 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
+
             {% endblock %}
 
 {% block body %}
-<div style="margin-top: 50px">
-    <div class="d-flex justify-content-center" >
-        
-        <div style="width: 50%">
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            <button class="btn btn-primary" formaction="">ENREGISTRER</button>
-            {{ form_end(form) }}
+{% block style %}
+    <style>
+      body {
+        background-color: white;
+        color: black;
+      }
+      .btn {
+        border-radius: 10px;
+        margin: 5px;
+      }
+      img {
+        border-radius: 15px;
+      }
+      .marge {
+        margin: 2rem 0;
+      }
+    </style>
+  {% endblock %}
+
+
+<main class="container">
+    <div class="example-wrapper">
+      <tbody>
+        <div class="marge">
+          <h1>
+            {% if isModification %}
+              Modification {{ membre.id }}
+            {% else %}
+              Ajout d'un membre
+            {% endif %}
+          </h1>
         </div>
+            {{ form_start(form , {'attr': {'class': 'form-horizontal'}}) }}
+            {{ form_widget(form) }}
+            <button class="btn btn-primary" type="submit">ENREGISTRER</button>
+            <a class="btn-retour-un-sur-autre" href="{{ path('lesMembresAdmin') }}">Retour</a>
+            {{ form_end(form) }}
+        </tbody>
     </div>
-</div>
+  </main>
+  {% block stylesheets %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/css/bootstrap.min.css" integrity="sha512-w7GJhE5tSJ2kpD/3rWlz6xgZpVEQ6YjfB8/+UJn0e+Wp8IvvsCt/YZ21zTUJlZgjB37U/+4V0Ef7Mhg5QN5A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  {% endblock %}
 {% endblock %}
