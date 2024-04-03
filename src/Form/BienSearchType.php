@@ -25,7 +25,7 @@ class BienSearchType extends AbstractType
                 'required' => false,
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'Prix minimale'
+                    'placeholder' => 'Prix maximum'
                 ]
             ])
             ->add('ville', TextType::class, [
