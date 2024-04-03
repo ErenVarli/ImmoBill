@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\BienSearch;
+use App\Form\BienSearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Repository\BienRepository;
+use Symfony\Component\HttpFoundation\Request;
 
 class BiensController extends AbstractController
 {
@@ -22,11 +25,22 @@ class BiensController extends AbstractController
     }
 
     #[Route('/biens', name: 'biens')]
-    public function biens(BienRepository $bienRepository ): Response
+    public function biens(BienRepository $bienRepository, Request $request): Response
     {
-        $bien = $bienRepository->findAll();
+        $search = new BienSearch();
+        $form = $this->createForm(BienSearchType::class, $search);
+        $form->handleRequest($request);
+        if($form->isEmpty() != true){
+            if($form->isSubmitted() && $form->isValid()){
+                $bien = $bienRepository->searchBien($search);
+            }
+        }
+        else{
+            $bien = $bienRepository->findAll();
+        }
         return $this->render('biens/biens.html.twig',[
-            'biens'=>$bien
+            'biens'=>$bien,
+            'form' =>$form->createView(),
         ]
     );
     }
