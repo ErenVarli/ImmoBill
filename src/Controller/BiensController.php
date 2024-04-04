@@ -30,9 +30,7 @@ class BiensController extends AbstractController
         $search = new BienSearch();
         $form = $this->createForm(BienSearchType::class, $search);
         $form->handleRequest($request);
-        
         $valForm = $form->getData();
-        var_dump($valForm);
         if($valForm->getPrixMax() || $valForm->getSurface() || $valForm->getVille()){
             if($form->isSubmitted() && $form->isValid()){
                 $bien = $bienRepository->searchBien($search);
