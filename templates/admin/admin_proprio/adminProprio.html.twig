@@ -58,14 +58,18 @@
 							<td>{{ leProprio.adresse }}</td>
 
 
+
 							<td>
-								<a class="btn btn-secondary  bouton-proprietaire" href="{{ path('admin_proprio_modification', { id: leProprio.id }) }}">Modifier</a>
+								<form action="{{path("admin_proprio_modification", {'id': leProprio.id})}}" style="margin-right: 2px">
+									<input type="submit" class="btn btn-outline-primary" value="MODIFIER">
+								</form>
 							</td>
+
 							<td>
-								<form method="POST" action="{{ path('admin_proprio_suppression', { id: leProprio.id })  }}"  onsubmit="return confirm('Un proprietaire va être supprimé, êtes vous sûr?')">
+								<form method="POST"  action="{{ path('admin_proprio_suppression', { id: leProprio.id })  }}"  onsubmit="return confirm('Un proprietaire va être supprimé, êtes vous sûr?')">
 									<input type="hidden" name="_method" value="delete"/>
 									<input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ leProprio.id) }}"/>
-									<input type="submit" class="btn btn-danger bouton-proprietaire" value="Supprimer"/>
+									<input type="submit"  class="btn btn-outline-danger" value="SUPPRIMER"/>
 								</form>
 							</td>
 

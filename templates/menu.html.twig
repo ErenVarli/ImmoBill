@@ -1,64 +1,67 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="nav-link active" aria-current="page" href="{{ path('accueil') }}"><img src="{{ asset('images/immobill.png') }}" id="logo-immobill" style="width:55px;height:55px;margin-right:10px" /></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('biens') }}">Biens</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('lesProprietairesAdmin') }}">Propriétaires</a>
-        </li>
-        {% if app.user %}
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Gestion</a>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="{{ path('lesBiensAdmin') }}">Biens</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="{{ path('lesProprietairesAdmin') }}">Propriétaires</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="{{ path('lesTypesAdmin') }}">Types</a>
-              </li>
-              {% if is_granted('ROLE_ADMIN') %}
-                <li>
-                  <a class="dropdown-item" href="{{ path('lesMembresAdmin') }}">Membres</a>
-                </li>
-              {% endif %}
-            </ul>
-          </li>
-        {% endif %}
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('contact') }}">Contact</a>
-        </li>
-      </ul>
+	<div class="container-fluid">
+		<a class="nav-link active" aria-current="page" href="{{ path('accueil') }}"><img src="{{ asset('images/immobill.png') }}" id="logo-immobill" style="width:55px;height:55px;margin-right:10px"/></a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('biens') }}">Biens</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('lesProprietairesAdmin') }}">Propriétaires</a>
+				</li>
+				{% if app.user %}
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Gestion</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a class="dropdown-item" href="{{ path('lesBiensAdmin') }}">Biens</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{{ path('lesProprietairesAdmin') }}">Propriétaires</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{{ path('lesTypesAdmin') }}">Types</a>
+							</li>
+							{% if is_granted('ROLE_ADMIN') %}
+								<li>
+									<a class="dropdown-item" href="{{ path('lesMembresAdmin') }}">Membres</a>
+								</li>
+							{% endif %}
+						</ul>
+					</li>
+				{% endif %}
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('contact') }}">Contact</a>
+				</li>
+				<ul class="ul-droite">
+					<div class="btn-group dropright">
+						<li class="nav-item dropdown">
+							<a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								{% if app.user %}
+									<i class="fa fa-user" id="btn-connextion-user" aria-hidden="true"></i>
+								{% else %}
+									<a class="btn btn-primary btn-connexion" id="btn-connextion-form" href="{{ path('app_login') }}">Connexion</a>
+								{% endif %}
+							</a>
+							<ul class="dropdown-menu">
+								<li class="nav-item profile-nav">
+									{% if app.user %}
+										<p class="email-user">{{ app.user.userIdentifier }}</p>
+										<a style="color: white!important;" class="btn btn-primary" href="#" onclick="return confirm('Voulez-vous vraiment vous déconnecter ?') && (document.location.href = '{{ path('app_logout') }}');">Déconnexion</a>
+									{% else %}
+										<a class="btn btn-primary btn-connexion" href="{{ path('app_login') }}">Connexion</a>
+									{% endif %}
+								</li>
+							</ul>
+						</li>
+					</div>
+				</ul>
+			</ul>
 
-      <ul class="ul-droite">
-        <div class="btn-group dropright">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              {% if app.user %}
-                <i class="fa fa-user" aria-hidden="true"></i>
-              {% else %}
-                <a class="btn btn-primary btn-deconnexion" href="{{ path('app_login') }}">Connexion</a>
-              {% endif %}
-            </a>
-            <ul class="dropdown-menu">
-              <li class="nav-item profile-nav">
-                {% if app.user %}
-                  <p class="email-user">{{ app.user.userIdentifier }}</p>
-                  <a style="color: white !important;" class="btn btn-primary" href="{{ path('app_logout') }}">Déconnexion</a>
-                {% else %}
-                  <a class="btn btn-primary btn-deconnexion" href="{{ path('app_login') }}">Connexion</a>
-                {% endif %}
-              </li>
-            </ul>
-          </li>
-        </div>
-      </ul>
-    </div>
-  </div>
+
+		</div>
+	</div>
 </nav>
