@@ -29,7 +29,12 @@ button,
     top: -15px;
 
 }
-
+.infos-user{
+    font-weight: bold;
+    display: flex;
+    flex-wrap: nowrap;
+    font-size: 14px;
+}
 #btn-connextion-user{
     background-color: #003f9c;
     margin-left: 20px;

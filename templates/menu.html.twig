@@ -9,9 +9,7 @@
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('biens') }}">Biens</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('lesProprietairesAdmin') }}">Propriétaires</a>
-				</li>
+
 				{% if app.user %}
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Gestion</a>
@@ -49,6 +47,8 @@
 							<ul class="dropdown-menu">
 								<li class="nav-item profile-nav">
 									{% if app.user %}
+										<p class="infos-user nom-user prenom-user">{{ app.user.nom }}
+											{{ app.user.prenom }}</p>
 										<p class="email-user">{{ app.user.userIdentifier }}</p>
 										<a style="color: white!important;" class="btn btn-primary" href="#" onclick="return confirm('Voulez-vous vraiment vous déconnecter ?') && (document.location.href = '{{ path('app_logout') }}');">Déconnexion</a>
 									{% else %}
