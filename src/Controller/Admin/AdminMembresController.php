@@ -48,7 +48,7 @@ class AdminMembresController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/supprimerType/{id}', name: 'admin_membre_suppression', methods:"delete")]
+    #[Route('/admin/supprimerMembre/{id}', name: 'admin_membre_suppression', methods:"delete")]
     public function suppression(User $membre=null, Request $request, EntityManagerInterface $manager): Response
     {
         if($this->isCsrfTokenValid("sup".$membre->getId(), $request->get('_token'))){
